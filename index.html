@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fuel Price App Support</title>
+  </head>
+  <body>
+    <h1>Meine Tankstellenapp</h1>
+    
+    
+  
+  <script src="script.js"></script>
+
+  Bitte geben Sie den Umkreis an in dem Sie suchen wollen!
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+      <div class="container">
+        <div id="data">
+          <!--<input type="text" id="name" placeholder="Tankstelle" /> <br />  -->
+
+          <table>
+            <tr>
+              <th>Umkreis in km</th>
+              <th>Kraftstoff</th>
+              <th>Sortieren nach</th>
+            </tr>
+            <tr>
+              <td>
+          <input onchange="controller()" type="number" min="1" id="Radius" placeholder="Umkreis" />
+              </td>
+          <td>
+          <select onchange="controller()" Kraftstoff="Kraftstoff" id="Kraftstoff">
+            <option value="e5">Super E5</option>
+            <option value="e10">Super E10</option>
+            <option value="diesel">Diesel</option>
+          </select>
+        </td>
+          <td>
+          <select onchange="controller()" sortierung="Sortierung" id="Sort">
+            <option value="price">Preis</option>
+            <option value="dist">Distanz</option>
+          </select>
+        </td>
+          <td>
+          <button type="button" onclick="controller();">Suchen</button>
+          </td>
+        </tr>
+      </table>
+        </div>
+      </div>
+
+      <div id="tableContainer"></div>
+
+      <script src="script.js"></script>
+      
+    </body>
+  </html>
+</html>
