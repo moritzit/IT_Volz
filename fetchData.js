@@ -22,6 +22,7 @@ async function getTankerkoenigData() {
   params.set("type", "diesel"); // Spritsorte: 'e5', 'e10', 'diesel' oder 'all'
   params.set("sort", "price"); // Sortierung: price, dist
   params.set("apikey", "81de83a1-2ba6-6310-ea8c-d7fdd0067e01"); //persönlicher Api-Key
+  // 2. Key: e15138bb-ada0-9a6d-c4ad-bcac2c4ca613
 
   const tankerkoenigData = await fetchData(url);
   console.log(tankerkoenigData);

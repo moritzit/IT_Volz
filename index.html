@@ -2,30 +2,38 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Fuel Price App Support</title>
-  </head>
-  <body>
-    <h1>Meine Tankstellenapp</h1>
-    
-    
-  
-  <script src="script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Meine Tankstellenapp - Fuel Price App Support</title>
 
-  Bitte geben Sie den Umkreis an in dem Sie suchen wollen!
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Document</title>
-      <link rel="stylesheet" href="style.css" />
-    </head>
-    <body>
-      <div class="container">
-        <div id="data">
+    <h1>
+        <img id="js-bild" src="Images/tankerkoenig.png" style="display:none" width="100px" height="100px" left="50%" top="0">
+        <script>
+          document.getElementById("js-bild").style.display = "inline";
+        </script>
+        <div style= "text-align:center" top="0"> Meine Tankstellenapp </div>
+        </h1>
+  </head>
+  <body style="text-align:center; background-color:rgb(194, 189, 189);">
+  <p style = "font-family:verdana,arial,helvetica;">
+    <h2>Günstig tanken - wo und wann?</h2> 
+  
+    <b> Profitieren Sie heute von unserem Preisvergleich. </b>
+    </br>
+    </br>
+    Geben Sie hier den Umkreis ihres aktuellen Standorts an, </br>
+    in welchem Sie nach günstigen Tankpreisen schauen wollen. </br>
+    Hier sehen Sie Ihre Favoriten: <a href="favs.html">Meine Favoriten</a>
+
+  </p>
+
+      <div class="container" style="text-align: center; width: 100%; height: 100%; margin-left: auto; margin-right: auto;"
+       cellpadding="0" cellspacing="0">
+        <div id="data" style="text-align: center; width: 100%; height: 100%; margin-left: auto; margin-right: auto;"
+        cellpadding="0" cellspacing="0">
           <!--<input type="text" id="name" placeholder="Tankstelle" /> <br />  -->
 
-          <table>
+          <table align="center">
             <tr>
               <th>Umkreis in km</th>
               <th>Kraftstoff</th>
@@ -56,10 +64,8 @@
         </div>
       </div>
 
-      <div id="tableContainer"></div>
+      <div id="tableContainer" align="center" ></div>
 
       <script src="script.js"></script>
-      
     </body>
-  </html>
 </html>

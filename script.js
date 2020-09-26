@@ -19,26 +19,30 @@ async function controller() {
 
   const data = await getTankerkoenigData(lat, lng, radius, fuelType, sort);
 
-  table(data.stations);
+  //const value = localStorage.getItem("key");
+
+  table(data.stations, fuelType);
+
+  //table1(value.item);
 }
 
-async function table(tankstellen) {
+async function table(tankstellen, fuelType) {
   const div = document.getElementById("tableContainer");
 
   let table =
-    "<table><tr><th>Name</th><th>Preis</th><th>Entfernung</th><th>Straße</th><th>Ort</th><th>Beste-Zeit</th></tr>";
+    "<table><tr><th>Favoriten</th><th>Name</th><th>Preis</th><th>Entfernung</th><th>Straße</th><th>Ort</th><th>Beste-Zeit</th></tr>";
 
   for (let item of tankstellen) {
     let id = item.id;
 
-    let data2 = await getVisData(id);
+    let data2 = await getVisData(id, fuelType);
     //console.log(data2);
 
-    table += `<tr><td>${item.brand}</td><td>${item.price}&#8364</td><td>${
-      item.dist
-    }km</td><td>${item.street + item.houseNumber}</td><td>${
-      item.place
-    }</td><td>${data2.text}</td></tr>`;
+    table += `<tr><td> <button type="button" onclick="favHin(id);">zu Favoriten</button>   </td> <td>${
+      item.brand
+    }</td><td>${item.price}&#8364</td><td>${item.dist}km</td><td>${
+      item.street + item.houseNumber
+    }</td><td>${item.place}</td><td>${data2.text}</td></tr>`;
   }
 
   table += "</table>";
@@ -75,6 +79,7 @@ async function getTankerkoenigData(lat, lng, rad, type, sort) {
   params.set("type", type); // Spritsorte: 'e5', 'e10', 'diesel' oder 'all'
   params.set("sort", sort); // Sortierung: price, dist
   params.set("apikey", "81de83a1-2ba6-6310-ea8c-d7fdd0067e01"); //persönlicher Api-Key
+  //2. Key: e15138bb-ada0-9a6d-c4ad-bcac2c4ca613
 
   const tankerkoenigData = await fetchData(url);
   return tankerkoenigData;
@@ -89,13 +94,70 @@ async function fetchData(url) {
 
 getVisData();
 
-async function getVisData(id) {
+async function getVisData(id, fuelType) {
   const stationPath = id.split("-").join("/");
 
   const urlVisHead =
     "https://www.volzinnovation.com/fuel_price_variations_germany/data2/";
-  const urlVisTail = "/e10.json";
+  const urlVisTail = "/" + fuelType + ".json";
 
   const visData = await fetchData(urlVisHead + stationPath + urlVisTail);
   return visData;
 }
+
+//async function favHin(fav) {
+//const favIds = [
+// "12c1ee3a-2e86-4b1c-9a4d-66dd0adc4c7e",
+// "8e85a891-70b5-4240-addd-08e180442ce1",
+//"72f6bb23-29e5-4533-8c32-9fb6a7a2c28c"
+//];
+//
+// Syntax:
+// Item hinzufügen
+// localStorage.setItem("key", fav);
+//}
+// Item auslesen
+
+//const fav = localStorage.getItem("key");
+
+//console.log(id);
+
+// Löscht alle Einträge
+//localStorage.clear();
+
+// Objekte und Arrays können in Json Strings umgewandelt werden
+//localStorage.setItem("favs", JSON.stringify(favIds));
+
+//let favs = localStorage.getItem("favs");
+//favs = JSON.parse(favs);
+//console.log(favs);
+
+//async function table1(favoriten) {
+// const div = document.getElementById("tableContainer");
+
+// let table =
+//"<table><tr><th>Name</th><th>Preis</th><th>Entfernung</th><th>Straße</th><th>Ort</th><th>Beste-Zeit</th></tr>";
+
+// for (let item of favoriten) {
+//   let id = item.id;
+
+//  let data3 = await getVisData(id);
+//console.log(data2);
+
+// table += `<tr><td> <button type="button" onclick="favLoe();">zu Favoriten</button>   </td> <td>${
+//    item.brand
+//  }</td><td>${item.price}&#8364</td><td>${item.dist}km</td><td>${
+//    item.street + item.houseNumber
+//  }</td><td>${item.place}</td><td>${data3.text}</td></tr>`;
+// }
+
+//table += "</table>";
+
+//div.innerHTML = table;
+//}
+
+//async function favLoe(fav) {
+// const fav = localStorage.getItem("key");
+
+// localStorage.removeItem("key");
+//}
